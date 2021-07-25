@@ -12,3 +12,11 @@ def show_error_info(e):
     exc_type, exc_obj, exc_tb = sys.exc_info()
     fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
     logger.error(f'{exc_type}, {fname}, {exc_tb.tb_lineno}')
+    logger.error(e, exc_info=True)
+
+
+def log_error(e):
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+    logger.error(f'{exc_type}, {fname}, {exc_tb.tb_lineno}')
+    logger.error(e, exc_info=True)
