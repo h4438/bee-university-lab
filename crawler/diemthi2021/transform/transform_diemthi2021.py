@@ -47,7 +47,8 @@ def job_transform(folder_diemthi_2021_path, folder_diemthi_2021_transform_path):
 
 if __name__ == '__main__':
     folder_diemthi_2021_path = '/bee_university/crawler/common/diemthi_2021'
-    folder_diemthi_2021_transform_path = '/bee_university/crawler/common/diemthi_2021_transform'
+    # folder_diemthi_2021_transform_path = '/bee_university/crawler/common/diemthi_2021_transform'
+    folder_diemthi_2021_transform_path = '/bee_university/crawler/common/diemthi_2021'
     job_transform(
         folder_diemthi_2021_path=folder_diemthi_2021_path,
         folder_diemthi_2021_transform_path=folder_diemthi_2021_transform_path)
