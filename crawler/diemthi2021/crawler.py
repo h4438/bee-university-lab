@@ -6,6 +6,7 @@ import aiohttp as aiohttp
 import requests
 
 from config.config_university_project import ConfigUniversityProject
+from helper.agent_helper import get_user_random_agent
 from helper.array_helper import get_sublists
 from helper.async_helper import multi_task_merge_results
 from helper.error_helper import log_error
@@ -17,13 +18,14 @@ logger = LoggerSimple(name=__name__).logger
 
 
 def get_info(sbd):
-    url_api = 'https://diemthi.tuoitre.vn/search-lop10-score'
+    url_api = 'https://diemthi.tuoitre.vn/search-thpt-score'
     body = {"data": sbd, "code": ""}
     data_exam = None
+
     try:
         response = requests.post(url=url_api, data=body)
+        # logger.info(f'{sbd} - {response.text}')
         if response.status_code == 200:
-            # logger.info(f'{sbd} - {response.text}')
             data = response.json()
             if data.get('data') and len(data.get('data')) > 0 and data.get('data')[0].get('_source'):
                 # result =
@@ -38,16 +40,22 @@ def get_info(sbd):
 
 
 async def get_info_async(sbd):
-    url_api = 'https://diemthi.tuoitre.vn/search-lop10-score'
+    # url_api = 'https://diemthi.tuoitre.vn/search-lop10-score'
+    url_api = 'https://diemthi.tuoitre.vn/search-thpt-score'
     body = {"data": sbd, "code": ""}
     data_exam = None
+    header = {
+        'user-agent': get_user_random_agent(),
+        'cookie': 'G_ENABLED_IDPS=google; fpsend=149436; __zi=3000.SSZzejyD3CiaW_sbrKeErsE1gRkRH1QKFvEZf8a6188lrRBZnmC5ncNTjkp33K_1Ojp-xCSEJyPatFlg.1',
+    }
     try:
         async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False)) as session:
-            async with session.post(url=url_api, data=body, timeout=30) as res:
+            async with session.post(url=url_api, headers=header, data=body, timeout=30) as res:
                 if res.status == 200:
-                    # response = await res.text()
+                    response = await res.text()
                     # logger.info(f'{sbd} - {response}')
                     data = await res.json()
+                    # logger.info(f'{data.get("data")}')
                     if data.get('data') and len(data.get('data')) > 0 and data.get('data')[0].get('_source'):
                         # result =
                         # logger.info(response.text)
@@ -92,6 +100,7 @@ def get_min_max_by_code(provide_id='64'):
             break
         mid = int((max - min) / 2) + min
         sbd = build_sbd(provide_id=provide_id, post_sbd=mid)
+        logger.info(f'estimate sbd: {sbd}')
         result = get_info(sbd)
         if result is None:
             max = mid
@@ -147,9 +156,10 @@ async def job_crawler():
 
 
 if __name__ == '__main__':
+    # logger.info(get_info(sbd='01000016'))
     # job_crawler()
     asyncio.run(
-        # get_info_async(sbd='02022890')
-        job_crawler()
+        get_info_async(sbd='01000016')
+        # job_crawler()
     )
     # logger.info(get_min_max_by_code(provide_id='01'))
