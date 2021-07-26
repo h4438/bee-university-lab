@@ -159,7 +159,7 @@ if __name__ == '__main__':
     # logger.info(get_info(sbd='01000016'))
     # job_crawler()
     asyncio.run(
-        get_info_async(sbd='01000016')
-        # job_crawler()
+        # get_info_async(sbd='01000016')
+        job_crawler()
     )
     # logger.info(get_min_max_by_code(provide_id='01'))
