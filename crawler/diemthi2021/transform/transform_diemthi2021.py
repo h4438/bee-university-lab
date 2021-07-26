@@ -18,6 +18,7 @@ def job_transform(folder_diemthi_2021_path, folder_diemthi_2021_transform_path):
             exam_data = {
                 'id': sbd
             }
+            exam_data.update({'year': 2021})
             if obj.get('TOAN') is not None and len(obj.get('TOAN')) > 0:
                 exam_data.update({'mathematics_score': obj.get('TOAN')})
             if obj.get('VAN') is not None and len(obj.get('VAN')) > 0:
@@ -28,16 +29,17 @@ def job_transform(folder_diemthi_2021_path, folder_diemthi_2021_transform_path):
                 exam_data.update({'chemistry_score': obj.get('HOA')})
             if obj.get('SINH') is not None and len(obj.get('SINH')) > 0:
                 exam_data.update({'biology_score': obj.get('SINH')})
-            if obj.get('Su') is not None and len(obj.get('Su')) > 0:
-                exam_data.update({'history_score': obj.get('Su')})
-            if obj.get('Dia') is not None and len(obj.get('Dia')) > 0:
-                exam_data.update({'geography_score': obj.get('Dia')})
+            if obj.get('SU') is not None and len(obj.get('SU')) > 0:
+                exam_data.update({'history_score': obj.get('SU')})
+            if obj.get('DIA') is not None and len(obj.get('DIA')) > 0:
+                exam_data.update({'geography_score': obj.get('DIA')})
             if obj.get('GDCD') is not None and len(obj.get('GDCD')) > 0:
                 exam_data.update({'civic_education_score': obj.get('GDCD')})
             if obj.get('NGOAINGU') is not None and len(obj.get('NGOAINGU')) > 0:
                 exam_data.update({'foreign_language_score': obj.get('NGOAINGU')})
             if obj.get('CODE_NGOAINGU') is not None and len(obj.get('CODE_NGOAINGU')) > 0:
                 code_language = obj.get('CODE_NGOAINGU')
+
                 exam_data.update({'foreign_language_type': code_language})
                 if code_language == 'N1':
                     exam_data.update({'english_score': obj.get('NGOAINGU')})
@@ -48,9 +50,13 @@ def job_transform(folder_diemthi_2021_path, folder_diemthi_2021_transform_path):
                 elif code_language == 'N4':
                     exam_data.update({'chinese_score': obj.get('NGOAINGU')})
                 elif code_language == 'N5':
-                    exam_data.update({'foreign_language_type': obj.get('NGOAINGU')})
+                    exam_data.update({'german_score': obj.get('NGOAINGU')})
                 elif code_language == 'N6':
                     exam_data.update({'japanese_score': obj.get('NGOAINGU')})
+                elif code_language == 'N7':
+                    exam_data.update({'korean_score': obj.get('NGOAINGU')})
+                else:
+                    logger.info(f'ERROR: {code_language} - {sbd}')
 
             lst_exam.append(exam_data)
             # logger.info(exam_data)
