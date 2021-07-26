@@ -24,7 +24,7 @@ def get_info(sbd):
     try:
         response = requests.get(url=url_api)
         if response.status_code == 200:
-            logger.info(f'{sbd} - {response.text}')
+            # logger.info(f'{sbd} - {response.text}')
             data = response.json()
             if data.get('studentCode') is not None:
                 # result =
@@ -59,25 +59,11 @@ async def get_info_async(sbd):
         log_error(e)
         logger.error(f'ERROR: sbd={sbd}')
 
-    #     response = requests.post(url=url_api, data=body)
-    #     if response.status_code == 200:
-    #         # logger.info(f'{sbd} - {response.text}')
-    #         data = response.json()
-    #         if data.get('data') and len(data.get('data')) > 0 and data.get('data')[0].get('_source'):
-    #             # result =
-    #             # logger.info(response.text)
-    #             data_exam = data.get('data')[0].get('_source')
-    #             logger.info(f"{sbd} - {data_exam.get('score')}")
-    # except Exception as e:
-    #     log_error(e)
-    #     logger.error(f'ERROR: sbd={sbd}')
-
     return data_exam
 
 
 def build_sbd(provide_id, post_sbd):
     prefix = ''.join(['0' for i in range(6 - len(str(post_sbd)))])
-    # logger.info(prefix)
     return f'{provide_id}{prefix}{post_sbd}'
 
 
@@ -94,7 +80,7 @@ def get_min_max_by_code(provide_id='64'):
             break
         mid = int((max - min) / 2) + min
         sbd = build_sbd(provide_id=provide_id, post_sbd=mid)
-        logger.info(f'estimate sbd: {sbd}')
+        # logger.info(f'estimate sbd: {sbd}')
         result = get_info(sbd)
         if result is None:
             max = mid
@@ -130,6 +116,7 @@ async def job_crawler():
 
             lst_task = []
             file_diemthi_path = ConfigUniversityProject().file_diemthi_2021_path(provide_id=provide_id)
+
             for idx, _sbd in enumerate(lst_sbd):
                 # if os.path.exists(file_diemthi_path):
                 #     logger.info(f'skip: {file_diemthi_path}')
@@ -149,11 +136,23 @@ async def job_crawler():
     # get_info(sbd='02055358')
 
 
+async def coverage_provide():
+    lst_provide = ['{0:02}'.format(num) for num in range(1, 65)]
+    # lst_provide = ['{0:02}'.format(num) for num in range(64, 65)]
+    for provide_id in lst_provide:
+        try:
+            max_sbd = get_min_max_by_code(provide_id)
+            logger.info(f'max_sbd: {provide_id} - {max_sbd}')
+        except Exception as e:
+            log_error(e)
+
+
 if __name__ == '__main__':
     # logger.info(get_info(sbd='53000016'))
     # job_crawler()
     asyncio.run(
         # get_info_async(sbd='01000016')
         job_crawler()
+        # coverage_provide()
     )
     # logger.info(get_min_max_by_code(provide_id='01'))
