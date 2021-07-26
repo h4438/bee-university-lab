@@ -53,7 +53,7 @@ async def get_info_async(sbd):
                     if data.get('studentCode') is not None:
                         # result =
                         # logger.info(response.text)
-                        data_exam = data.get('studentCode')
+                        data_exam = data
                         logger.info(f"{sbd} - {data_exam}")
     except Exception as e:
         log_error(e)
