@@ -107,6 +107,7 @@ def get_min_max_by_code(provide_id='64'):
 
 
 async def job_crawler():
+    # lst_provide = ['{0:02}'.format(num) for num in range(1, 65)]
     lst_provide = ['{0:02}'.format(num) for num in range(1, 65)]
     for provide_id in lst_provide:
         try:
@@ -127,9 +128,9 @@ async def job_crawler():
             lst_task = []
             file_diemthi_path = ConfigUniversityProject().file_diemthi_2021_path(provide_id=provide_id)
             for idx, _sbd in enumerate(lst_sbd):
-                if os.path.exists(file_diemthi_path):
-                    logger.info(f'skip: {file_diemthi_path}')
-                    continue
+                # if os.path.exists(file_diemthi_path):
+                #     logger.info(f'skip: {file_diemthi_path}')
+                #     continue
                 # lst_obj_sbd = multithread_helper(items=sub_lst_sbd, method=get_info, timeout_concurrent_by_second=36000,
                 #                                  max_workers=50, debug=False)
 
