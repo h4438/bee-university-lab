@@ -16,28 +16,42 @@ def job_transform(folder_diemthi_2021_path, folder_diemthi_2021_transform_path):
             if sbd is None:
                 continue
             exam_data = {
-                'sbd': sbd
+                'id': sbd
             }
             if obj.get('TOAN') is not None and len(obj.get('TOAN')) > 0:
-                exam_data.update({'Toan': obj.get('TOAN')})
+                exam_data.update({'mathematics_score': obj.get('TOAN')})
             if obj.get('VAN') is not None and len(obj.get('VAN')) > 0:
-                exam_data.update({'Van': obj.get('VAN')})
+                exam_data.update({'literature_score': obj.get('VAN')})
             if obj.get('LY') is not None and len(obj.get('LY')) > 0:
-                exam_data.update({'Li': obj.get('LY')})
+                exam_data.update({'physics_score': obj.get('LY')})
             if obj.get('HOA') is not None and len(obj.get('HOA')) > 0:
-                exam_data.update({'Hoa': obj.get('HOA')})
+                exam_data.update({'chemistry_score': obj.get('HOA')})
             if obj.get('SINH') is not None and len(obj.get('SINH')) > 0:
-                exam_data.update({'Sinh': obj.get('SINH')})
+                exam_data.update({'biology_score': obj.get('SINH')})
             if obj.get('Su') is not None and len(obj.get('Su')) > 0:
-                exam_data.update({'SU': obj.get('Su')})
+                exam_data.update({'history_score': obj.get('Su')})
             if obj.get('Dia') is not None and len(obj.get('Dia')) > 0:
-                exam_data.update({'DIA': obj.get('Dia')})
+                exam_data.update({'geography_score': obj.get('Dia')})
             if obj.get('GDCD') is not None and len(obj.get('GDCD')) > 0:
-                exam_data.update({'GDCD': obj.get('GDCD')})
+                exam_data.update({'civic_education_score': obj.get('GDCD')})
             if obj.get('NGOAINGU') is not None and len(obj.get('NGOAINGU')) > 0:
-                exam_data.update({'Ngoai_ngu': obj.get('NGOAINGU')})
+                exam_data.update({'foreign_language_score': obj.get('NGOAINGU')})
             if obj.get('CODE_NGOAINGU') is not None and len(obj.get('CODE_NGOAINGU')) > 0:
-                exam_data.update({'Ma_mon_ngoai_ngu': obj.get('CODE_NGOAINGU')})
+                code_language = obj.get('CODE_NGOAINGU')
+                exam_data.update({'foreign_language_type': code_language})
+                if code_language == 'N1':
+                    exam_data.update({'english_score': obj.get('NGOAINGU')})
+                elif code_language == 'N2':
+                    exam_data.update({'russian_score': obj.get('NGOAINGU')})
+                elif code_language == 'N3':
+                    exam_data.update({'french_score': obj.get('NGOAINGU')})
+                elif code_language == 'N4':
+                    exam_data.update({'chinese_score': obj.get('NGOAINGU')})
+                elif code_language == 'N5':
+                    exam_data.update({'foreign_language_type': obj.get('NGOAINGU')})
+                elif code_language == 'N6':
+                    exam_data.update({'japanese_score': obj.get('NGOAINGU')})
+
             lst_exam.append(exam_data)
             # logger.info(exam_data)
         if lst_exam is not None and len(lst_exam) > 0:
@@ -47,8 +61,8 @@ def job_transform(folder_diemthi_2021_path, folder_diemthi_2021_transform_path):
 
 if __name__ == '__main__':
     folder_diemthi_2021_path = '/bee_university/crawler/common/diemthi_2021'
-    # folder_diemthi_2021_transform_path = '/bee_university/crawler/common/diemthi_2021_transform'
-    folder_diemthi_2021_transform_path = '/bee_university/crawler/common/diemthi_2021'
+    folder_diemthi_2021_transform_path = '/bee_university/crawler/common/diemthi_2021_transform'
+    # folder_diemthi_2021_transform_path = '/bee_university/crawler/common/diemthi_2021'
     job_transform(
         folder_diemthi_2021_path=folder_diemthi_2021_path,
         folder_diemthi_2021_transform_path=folder_diemthi_2021_transform_path)
