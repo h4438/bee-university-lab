@@ -1,12 +1,12 @@
 # bee-university
-> Project Open Source provide by BeeCost
+> Project Open Source provide by BeeCost and Metric
 
 
 Mục tiêu Project:
 
-+ Thu thập gần 1 triệu dữ liệu điểm thi THPT Quốc gia năm 2019, 2020
++ Thu thập gần 1 triệu dữ liệu điểm thi THPT Quốc gia năm 2019, 2020, 2021
  
-+ Thu thập điểm chuẩn đại học 2014 - 2019
++ Thu thập điểm chuẩn đại học 2014 - 2020
 
 + Phân tích dữ liệu
 
@@ -64,14 +64,17 @@ python crawler/diemthi2020/crawler_diemthi2020.py
 
 3. Full dữ liệu điểm thi THPT Quốc gia
 
-**Dữ liệu điểm thi THPT năm 2019**
+**Dữ liệu điểm thi THPT năm 2021**
 
-Format csv : [diemthi2019.csv.zip](https://github.com/beecost/bee-university/blob/master/output_data/crawler/common/diemthi_2019_transform/diemthi2019.csv.zip)
+Format csv : [diemthi2021.csv.zip](https://github.com/beecost/bee-university/blob/master/output_data/crawler/common/diemthi_2021_transform/diemthi2021.csv.zip)
 
 **Dữ liệu điểm thi THPT năm 2020**
 
 Format csv : [diemthi2020.csv.zip](https://github.com/beecost/bee-university/blob/master/output_data/crawler/common/diemthi_2020_transform/diemthi2020.csv.zip)
 
+**Dữ liệu điểm thi THPT năm 2019**
+
+Format csv : [diemthi2019.csv.zip](https://github.com/beecost/bee-university/blob/master/output_data/crawler/common/diemthi_2019_transform/diemthi2019.csv.zip)
 
 Download [BeeCost Extension](https://www.beecost.com/download/extension?pub=github_opensource) (ủng hộ BeeCost <3)
 
@@ -108,10 +111,6 @@ Pandas
 
 Spark
 
-
-# Author
-
-Tran Minh Tuan - [tuantmtb](https://facebook.com/tuantmtb) - tuan@beecost.com
 
 # BeeCost - Tiện ích mua sắm Online
 
