@@ -4,10 +4,12 @@ class ConfigUniversityProject:
         # self.folder_data_base = kwargs.get('folder_data_base', '/bee_university')
         self.folder_data_base = kwargs.get('folder_data_base',
                                            '/Users/tuantmtb/Documents/wp/beecost/data/university/2023')
+        self.folder_data_base = "./TESTOUT/"
 
     @property
     def folder_output_path(self):
-        return self.folder_data_base + '/crawler/common'
+        target = "/crawler/common"
+        return self.folder_data_base + target 
 
     @property
     def file_university_path(self):
