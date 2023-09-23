@@ -68,7 +68,6 @@ if __name__ == '__main__':
     file_university_path = ConfigUniversityProject().file_university_path
     universities = load_jsonl_from_gz(file_university_path)
 
-    universities = universities[:2]
     universities_diemchuan_data = multithread_helper(items=universities, method=method_univerisy_data,
                                                      timeout_concurrent_by_second=360, debug=False,
                                                      max_workers=20)
