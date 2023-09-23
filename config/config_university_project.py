@@ -1,10 +1,7 @@
 class ConfigUniversityProject:
 
     def __init__(self, *args, **kwargs):
-        # self.folder_data_base = kwargs.get('folder_data_base', '/bee_university')
-        self.folder_data_base = kwargs.get('folder_data_base',
-                                           '/Users/tuantmtb/Documents/wp/beecost/data/university/2023')
-        self.folder_data_base = "./TESTOUT/"
+        self.folder_data_base = "./DATA"
 
     @property
     def folder_output_path(self):
