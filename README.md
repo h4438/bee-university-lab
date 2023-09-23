@@ -110,19 +110,3 @@ Numpy
 Pandas
 
 Spark
-
-
-# BeeCost - Tiện ích mua sắm Online
-
-[BeeCost.VN](https://beecost.vn), [BeeCost.Com](https://www.beecost.com) là Trợ lý mua sắm online. Giúp bạn mua hàng tiết kiệm hơn trên Shopee, Tiki, Sendo, Lazada, Adayroi. Ứng dụng được tạo từ việc phân tích hơn 50 triệu sản phẩm thương mại điện tử mỗi ngày. 
-
-Tính năng chính của tiện ích BeeCost:
-
-- Lịch sử giá hơn 50 triệu sản phẩm
-- So sánh giá tìm nơi bán rẻ nhất
-- Price Alert (Thông báo khi giảm giá)
-- Tìm kiếm mã giảm giá tự động
-
-> Tìm hiểu BeeCost tại [beecost.com](https://www.beecost.com) và [beecost.vn](https://beecost.vn)
-
-> Download [BeeCost Extension](https://www.beecost.com/download/extension?pub=github_opensource) trên Google Chrome
